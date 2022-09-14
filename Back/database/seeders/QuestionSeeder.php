@@ -3,11 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Question;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-
 class QuestionSeeder extends Seeder
 {
     private const Questions = [

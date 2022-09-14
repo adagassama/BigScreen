@@ -29,13 +29,15 @@
               <input class="form-control" name="exampleForm" type="number"/>
             </div>
             <div class="form-radio mb-2" v-else >
-              <div>
-                <input class="form-radio-input" value="r1" type="radio" 
-                 />
-                <label class="form-radio-label" for="r1">
-                    {{question.possible_answer}}
-                </label>
-              </div>
+              <section>
+                <div v-for="rep in question.possible_answer.split(',')" :key="rep.id">
+                  <input class="form-radio-input" name="possible_answer" value="rep" type="radio" /> 
+                  <label class="form-radio-label" for="rep">
+                      {{rep}}
+                  </label>
+                </div>
+              </section>
+              
             </div>
         </div>
           </li>
@@ -60,8 +62,8 @@ export default {
         //API Call
         axios.get("http://127.0.0.1:8000/api/questions").then((res) => {
             this.questions = res.data.data;
-            console.log(res.data.data)
         });
+
       },
       data() {
         return {
