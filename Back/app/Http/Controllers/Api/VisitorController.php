@@ -22,21 +22,21 @@ class VisitorController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
         $request->validate([
-            'answer'      => ['required']
+            'email' => ['required'],
         ]);
         $visitor = Visitor::create([
-            'email' => $request->answer
+            'email' => $request->email,
         ]);
 
         return response()->json([
             'success' => true,
             'message' => 'Visitor created',
-            'data' => $visitor
+            'data' => $visitor,
         ], 201);
     }
 
