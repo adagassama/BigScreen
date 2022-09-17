@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Answer;
 use Illuminate\Http\Request;
+use App\Models\Visitor;
 
 class AnswerController extends Controller
 {
@@ -22,23 +23,36 @@ class AnswerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'answer'      => ['required']
-        ]);
-        $answer = Answer::create([
-            'answer' => $request->answer
-        ]);
+
+        foreach($request->formData as $one)
+        {
+            $one = json_decode($one);
+
+            if($one->question_id == 1)
+            {
+                $user = new Visitor();
+                $user->email = $one->answer;
+                $user->save();
+            }
+            $answer = new Answer();
+            $answer->answer = $one->answer;
+            $answer->question_id = $one->question_id;
+            $answer->visitor_id = $user->id;
+            $answer->save();
+        }
 
         return response()->json([
-            'success' => true,
-            'message' => 'Answer added',
-            'data' => $answer
-        ], 201);
+            'message' => 'Nouveau sondage créé !',
+            'code' => 200
+        ]);
+
     }
+
+
 
     /**
      * Display the specified resource.
