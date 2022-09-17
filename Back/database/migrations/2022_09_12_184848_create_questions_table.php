@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('content');
-            $table->string('type');
+            $table->string('title',100);
+            $table->string('content',255);
+            $table->enum('type',['A','B','C']);
             $table->string('possible_answer');
             $table->timestamps();
         });
