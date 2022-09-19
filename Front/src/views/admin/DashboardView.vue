@@ -1,11 +1,12 @@
 <template>
-  <div>salut ici le dashboard</div>
+ <Dashboard></Dashboard>
 </template>
 
 <script>
  import { RouterLink, RouterView } from 'vue-router'
+import Dashboard from '../../components/Dashboard.vue';
 export default {
-
+    components: { Dashboard }
 }
 </script>
 

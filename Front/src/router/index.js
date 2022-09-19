@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import DashboardView from '../views/admin/DashboardView.vue'
 import SurveyView from '../views/SurveyView.vue'
+import ResponseView from '../views/ResponseView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/',
       name: 'surveyView',
       component: SurveyView
+    },
+    {
+      path: '/response',
+      name: 'response',
+      component: ResponseView
     },
     {
       path: '/about',
