@@ -1,6 +1,6 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
 
+import { RouterLink, RouterView } from 'vue-router'
 import SurveyView from './views/SurveyView.vue';
 
 </script>
@@ -8,6 +8,7 @@ import SurveyView from './views/SurveyView.vue';
 <template>
  
 <RouterView/>
+
 
 </template>
 
