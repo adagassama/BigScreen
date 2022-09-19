@@ -125,12 +125,6 @@ export default {
   methods: {
     // Ajout des résultats d'un sondage
     create() {
-      // axios.post('http://127.0.0.1:8000/api/visitors', this.formD).then((response) => {
-      //     console.log(response);
-      //     this.$toast.success('Succès Visitor!')
-      // }).catch((error) => {
-      //     console.log(error)
-      // });
       console.log(this.formData);
       let blag = new FormData();
         this.formData.forEach(element => {
