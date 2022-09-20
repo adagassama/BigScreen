@@ -125,20 +125,20 @@ export default {
   methods: {
     // Ajout des résultats d'un sondage
     create() {
-      console.log(this.formData);
-      let blag = new FormData();
+        let blag = new FormData();
         this.formData.forEach(element => {
           blag.append('formData[]', JSON.stringify(element));
         });
-      axios
-        .post("http://127.0.0.1:8000/api/answers",blag)
-        .then((response) => {
-          console.log(response);
-          this.$toast.success("Succès Answers !");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        axios
+          .post("http://127.0.0.1:8000/api/answers",blag)
+          .then((response) => {
+            console.log(response)
+            localStorage.setItem('url', response.data.url)
+            this.$toast.success("Succès Answers !");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     },
   },
 };
