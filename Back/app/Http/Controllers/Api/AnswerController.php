@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Answer;
-use Illuminate\Http\Request;
 use App\Models\Visitor;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AnswerController extends Controller
 {
@@ -28,14 +29,13 @@ class AnswerController extends Controller
     public function store(Request $request)
     {
 
-        foreach($request->formData as $one)
-        {
+        foreach ($request->formData as $one) {
             $one = json_decode($one);
 
-            if($one->question_id == 1)
-            {
+            if ($one->question_id == 1) {
                 $user = new Visitor();
                 $user->email = $one->answer;
+                $user->url = Str::random(20);
                 $user->save();
             }
             $answer = new Answer();
@@ -45,14 +45,30 @@ class AnswerController extends Controller
             $answer->save();
         }
 
-        return response()->json([
-            'message' => 'Nouveau sondage créé !',
-            'code' => 200
-        ]);
+        // $this->getVisitorResponse($user->url);
+
+        return response()->json(['text' => 'Toute l’équipe de Bigscreen vous remercie pour votre engagement.<br/>Grâce à
+                                            votre investissement, nous vous préparons une application toujours plus
+                                            facile à utiliser, seul ou en famille.<br>
+                                            Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
+                                            cette adresse:',
+                                 'url'  =>  $user->url]);
 
     }
 
+    public function getVisitorResponse($url)
+    {
+        $visitor = Visitor::where('url', $url)->first();
+        $visitorResponse = Answer::where('visitor_id', $visitor->id)
+                                ->with('question')
+                                ->get();
 
+        return response()->json([
+            'success' => true,
+            'message' => 'Réponses Visitor',
+            'data' => $visitorResponse,
+        ], 200);
+    }
 
     /**
      * Display the specified resource.
