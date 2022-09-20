@@ -28,3 +28,5 @@ Route::post('login', [AuthController::class, 'login']);
 Route::apiResource('questions',QuestionController::class);
 Route::apiResource('answers',AnswerController::class);
 Route::apiResource('visitors',VisitorController::class);
+
+Route::get('results/{url}',[AnswerController::class,'getVisitorResponse']);
