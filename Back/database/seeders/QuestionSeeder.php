@@ -113,14 +113,14 @@ class QuestionSeeder extends Seeder
         [
             'title'             => 'Question 18/20',
             'content'           => 'Aimeriez vous pouvoir enregistrer des émissions TV pour pouvoir les regarder ultérieurement ?',
-            'type'              => 'C',
-            'possible_answer'   => ''
+            'type'              => 'A',
+            'possible_answer'   => 'Oui, Non'
         ],
         [
             'title'             => 'Question 19/20',
             'content'           => 'Aimeriez-vous jouer à des jeux exclusifs sur votre Bigscreen ?',
-            'type'              => 'C',
-            'possible_answer'   => ''
+            'type'              => 'A',
+            'possible_answer'   => 'Oui, Non'
         ],
         [
             'title'             => 'Question 20/20',
