@@ -11,6 +11,10 @@ class Answer extends Model
     protected $fillable = ['answer','question_id', 'visitor_id'];
 
     public function question(){
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(Question::class, 'question_id');
+    }
+
+    public function visitor(){
+        return $this->belongsTo(Visitor::class);
     }
 }
