@@ -8,7 +8,7 @@
       <div class="text-center mt-3">
         
         <div>
-          <strong>Merci d'avoir participer à notre sondage</strong>
+          <strong>Vous trouverez ci-dessous les réponses que vous apportées à notre sondage le :</strong>
           <p class="pt-4">Ci dessous vos resultats</p>
         </div>
         
@@ -18,13 +18,13 @@
 
       <form class="px-4" action="">
         <ul>
-          <li v-for="question in questions" :key="question.id" style="list-style:none" width="20" class=" pt-2 mb-4 border border-1">
+          <li v-for="answer in answers" :key="answer.id" style="list-style:none" width="20" class=" pt-2 mb-4 border border-1">
             <div>
-            <p class="text-left pt-4 mb-1 decompte">{{question.title}} </p>
-            <p>{{question.content}}</p>
+            <p class="text-left pt-4 mb-1 decompte">{{answer.question.title}} </p>
+            <p>{{answer.question.content}}</p>
             
             <div class="form-control div-reponse mb-2"  >
-              <div class="div-rep" >ici la reponse ici la reponse</div>
+              <div class="div-rep" >{{answer.answer}}</div>
             </div>
            
             
@@ -38,25 +38,27 @@
 </template>
 
 <script>
-import Modal from '../components/Modal.vue';
-import axios from 'axios'
+import axios from "axios";
 export default {
-  components: { Modal },
-    mounted() {
-        //API Call
-        axios.get("http://127.0.0.1:8000/api/questions").then((res) => {
-            this.questions = res.data.data;
-
-        });
-        
-      },
-      data() {
-        return {
-            questions: [],
-            
-        };
-      },
-}
+  mounted() {
+    let url = localStorage.getItem("url");
+    console.log(url);
+    axios
+      .get(`http://127.0.0.1:8000/api/results/${url}`)
+      .then((res) => {
+        this.answers = res.data.data
+        console.log(this.answers);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  data() {
+    return {
+      answers: [],
+    };
+  }
+};
 </script>
 
 <style>
