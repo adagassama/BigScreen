@@ -101,8 +101,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import Modal from "../components/Modal.vue";
 import axios from "axios";
+import Swal from 'sweetalert2'
 export default {
-  components: { Modal },
   mounted() {
     //API Call
     axios.get("http://127.0.0.1:8000/api/questions").then((res) => {
@@ -134,7 +134,12 @@ export default {
           .then((response) => {
             console.log(response)
             localStorage.setItem('url', response.data.url)
-            this.$toast.success("Succès Answers !");
+            Swal.fire({
+                      title: "Good Job !",
+                      html: `<p>${response.data.text}</p>
+                             <a href="/response/${response.data.url}">Voir mes réponses</a>`,
+                      icon: "success",
+                    });
           })
           .catch((error) => {
             console.log(error);
