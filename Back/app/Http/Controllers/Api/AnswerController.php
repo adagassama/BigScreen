@@ -17,7 +17,12 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        //
+        $answer = Answer::with('question')->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Liste de toutes les réponses',
+            'data' => $answer
+        ], 200);
     }
 
     /**
