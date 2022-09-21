@@ -24,7 +24,7 @@
             <p>{{answer.question.content}}</p>
             
             <div class="form-control div-reponse mb-2"  >
-              <div class="div-rep" >{{answer.answer}}</div>
+              <div class="div-rep">{{answer.answer}}</div>
             </div>
            
             

@@ -15,23 +15,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr >
-                    <td class="col-3">Question 1/20</td>
-                    <td class="col-5">Votre Email</td>
-                    <td class="col-8 text-center">test@test.com</td>
+                  <tr v-for="answer in answers" :key="answer.id">
+                    <td class="col-3">{{answer.question.title}}</td>
+                    <td class="col-5">{{answer.question.content}}</td>
+                    <td class="col-8 text-center">{{answer.answer}}</td>
                   </tr>
-                  <tr >
-                    <td class="col-3">Question 2/20</td>
-                    <td class="col-5">Votre Age</td>
-                    <td class="col-8 text-center">26 ans</td>
-                  </tr>
-                  <tr >
-                    <td class="col-3">Question 3/20</td>
-                    <td class="col-5">Votre Sexe</td>
-                    <td class="col-8 text-center"> Femme</td>
-                  </tr>
-                  
-                  
                 </tbody>
               </table>
             </div>
@@ -44,16 +32,26 @@
   </template>
   
   <script>
-      
-  export default {
-      data(){
-          return{
-            
-          }
-      },
-      mounted(){
+  import axios from "axios";
+export default {
+  mounted() {
+    axios
+    .get(`http://127.0.0.1:8000/api/answers`)
+      .then((res) => {
+        this.answers = res.data.data
+        console.log(this.answers);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  data() {
+    return {
+      answers: [],
+    };
   }
-  }
+};
+  
   </script>
   
   <style>
