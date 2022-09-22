@@ -3,8 +3,8 @@
     <div class="logo">
       <img src="../assets/profil.png" alt="profil" />
     </div>
-    <div class="text-center mt-4 name">LOGIN</div>
-    <!-- <form class="p-3 mt-3"> -->
+    <div class="logo_bigscreen"><img src="../assets/bigscreen_logo.png" alt="profil" /></div>
+    
     <div class="form-field d-flex align-items-center">
       <input type="text" name="email" v-model="formData.email" />
       <p class="text-danger" v-text="errors.email"></p>
@@ -13,7 +13,7 @@
       <input type="password" name="password" v-model="formData.password" />
       <p class="text-danger" v-text="errors.password"></p>
     </div>
-    <button @click="login" class="btn mt-3">Login</button>
+    <button @click="login" class="btn mt-3">- CONNEXION -</button>
   </div>
 </template>
 
@@ -49,17 +49,21 @@
 <style>
 .wrapper {
   max-width: 350px;
-  min-height: 500px;
-  margin: 80px auto;
-  padding: 40px 30px 30px 30px;
+  min-height: 400px;
+  margin: 100px auto;
+  padding: 30px 30px 30px 30px;
   background-color: #ecf0f3;
-  border-radius: 15px;
-  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+  border-radius: 5px;
 }
 
 .logo {
   width: 80px;
   margin: auto;
+}
+
+.logo_bigscreen img {
+  width: 100%;
+  max-width: 450px;
 }
 
 .logo img {
@@ -96,7 +100,7 @@
 .wrapper .form-field {
   padding-left: 10px;
   margin-bottom: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
 }
 
@@ -110,7 +114,7 @@
   height: 40px;
   background-color: #03a9f4;
   color: #fff;
-  border-radius: 25px;
+  border-radius: 5px;
   box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
   letter-spacing: 1.3px;
 }
