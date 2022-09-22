@@ -43,6 +43,8 @@
 import Accueil from './Accueil.vue';
 import Questionnaire from './Questionnaire.vue';
 import Reponse from './Reponse.vue';
+import axios from "axios";
+window.axios = axios;
 export default {
     data(){
         return{
@@ -55,6 +57,7 @@ export default {
         }
     },
     mounted() {
+        window.axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`
         $(document).ready(function () {
             var trigger = $(".hamburger"), overlay = $(".overlay"), isClosed = false;
             trigger.click(function () {
