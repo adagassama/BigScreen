@@ -74,11 +74,6 @@
                           {{ rep }}
                         </option>
                       </select>
-
-                      <!-- <input class="form-radio-input" :id=question.id :name="'rep' + question.id" type="radio" v-model="formData.rep[question.id]"/> 
-                  <label class="form-radio-label" :for="question.id">
-                      {{rep}}
-                  </label> -->
                     </div>
                   </section>
                 </div>
@@ -101,7 +96,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import Modal from "../components/Modal.vue";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 export default {
   mounted() {
     //API Call
@@ -125,25 +120,23 @@ export default {
   methods: {
     // Ajout des résultats d'un sondage
     create() {
-        let blag = new FormData();
-        this.formData.forEach(element => {
-          blag.append('formData[]', JSON.stringify(element));
-        });
-        axios
-          .post("http://127.0.0.1:8000/api/answers",blag)
-          .then((response) => {
-            console.log(response)
-            localStorage.setItem('url', response.data.url)
-            Swal.fire({
-                      title: "Good Job !",
-                      html: `<p>${response.data.text}</p>
+      let blag = new FormData();
+      this.formData.forEach((element) => {
+        blag.append("formData[]", JSON.stringify(element));
+      });
+      axios
+        .post("http://127.0.0.1:8000/api/answers", blag)
+        .then((response) => {
+          Swal.fire({
+            title: "Good Job !",
+            html: `<p>${response.data.text}</p>
                              <a href="/response/${response.data.url}">Voir mes réponses</a>`,
-                      icon: "success",
-                    });
-          })
-          .catch((error) => {
-            console.log(error);
+            icon: "success",
           });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
