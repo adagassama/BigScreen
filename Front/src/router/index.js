@@ -15,7 +15,8 @@ const router = createRouter({
     {
       path: '/administration',
       name: 'administration',
-      component: DashboardView
+      component: DashboardView,
+      meta: { authOnly: true }
     },
     {
       path: '/',
@@ -23,11 +24,40 @@ const router = createRouter({
       component: SurveyView
     },
     {
-      path: '/response',
+      path: '/response/:url',
       name: 'response',
-      component: ResponseView
+      component: ResponseView,
+      props: true
     },
   ]
 })
+
+function isLoggedIn() {
+  return localStorage.getItem("token");
+}
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.authOnly)) {
+    if (!isLoggedIn()) {
+      next({
+        path: "/login",
+        query: { redirect: to.fullPath }
+      });
+    } else {
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.guestOnly)) {
+    if (isLoggedIn()) {
+      next({
+        path: "/administration",
+        query: { redirect: to.fullPath }
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
 
 export default router
