@@ -13,7 +13,7 @@ class AnswerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -49,8 +49,6 @@ class AnswerController extends Controller
             $answer->visitor_id = $user->id;
             $answer->save();
         }
-
-        // $this->getVisitorResponse($user->url);
 
         return response()->json(['text' => 'Toute l’équipe de Bigscreen vous remercie pour votre engagement.<br/>Grâce à
                                             votre investissement, nous vous préparons une application toujours plus
