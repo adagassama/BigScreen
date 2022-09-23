@@ -1,6 +1,6 @@
 <template>
   <div id="chart">
-        <apexchart width="450" type="donut" :options="chartOptions" :series="series"></apexchart>
+        <apexchart width="400" type="pie" :options="chartOptions" :series="series"></apexchart>
       </div>
 </template>
 
@@ -11,11 +11,11 @@ export default {
             series: [44, 55, 41, 17],
           chartOptions: {
             chart: {
-              type: 'donut',
+              type: 'pie',
             },
             labels: ['SteamVR', 'Occulus store', 'Viveport', 'Windows store', ],
             responsive: [{
-              breakpoint: 350,
+              breakpoint: 450,
               options: {
                 chart: {
                   width: 200
