@@ -5,10 +5,18 @@
 </template>
 
 <script>
-export default {
+import axios from "axios";
+  export default {
+    mounted() {
+      //API Call
+      axios.get("http://127.0.0.1:8000/api/getPieChart/7").then((res) => {
+        this.series = res.data;
+        console.log(this.series);
+      });
+    },
     data(){
         return{
-            series: [44, 55, 41, 17],
+            series: [],
           chartOptions: {
             chart: {
               type: 'pie',
