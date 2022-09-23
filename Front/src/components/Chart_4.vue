@@ -1,6 +1,6 @@
 <template>
    <div id="chart">
-        <apexchart type="radar" height="350" :options="chartOptions" :series="series"></apexchart>
+        <apexchart type="radar" width="400" height="300" :options="chartOptions" :series="series"></apexchart>
       </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
           }],
           chartOptions: {
             chart: {
-              height: 350,
+              height: 300,
               type: 'radar',
             },
             xaxis: {
