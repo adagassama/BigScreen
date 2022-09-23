@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AnswerController;
+use App\Http\Controllers\Api\BackController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\VisitorController;
 use App\Http\Controllers\AuthController;
@@ -30,3 +31,5 @@ Route::apiResource('answers',AnswerController::class);
 Route::apiResource('visitors',VisitorController::class);
 
 Route::get('results/{url}',[AnswerController::class,'getVisitorResponse']);
+
+Route::get('getPieChart/{id}',[BackController::class,'getPieChart']);
