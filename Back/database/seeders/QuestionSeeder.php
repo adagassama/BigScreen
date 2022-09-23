@@ -24,7 +24,7 @@ class QuestionSeeder extends Seeder
             'title'             => 'Question 3/20',
             'content'           => 'Votre sexe',
             'type'              => 'A',
-            'possible_answer'   => 'Homme, Femme, Préfère ne pas répondre'
+            'possible_answer'   => 'Homme,Femme,Préfère ne pas répondre'
         ],
         [
             'title'             => 'Question 4/20',
@@ -42,19 +42,19 @@ class QuestionSeeder extends Seeder
             'title'             => 'Question 6/20',
             'content'           => 'Quel marque de casque VR utilisez-vous ?',
             'type'              => 'A',
-            'possible_answer'   => 'Oculus Quest, Oculus Rift/s, HTC Vive, Windows Mixed Reality, Valve index'
+            'possible_answer'   => 'Oculus Quest,Oculus Rift/s,HTC Vive,Windows Mixed Reality,Valve index'
         ],
         [
             'title'             => 'Question 7/20',
             'content'           => 'Sur quel magasin dappplication achetez vous des contenus VR ?',
             'type'              => 'A',
-            'possible_answer'   => 'SteamVR, Occulus store, Viveport, Windows store'
+            'possible_answer'   => 'SteamVR,Occulus store,Viveport,Windows store'
         ],
         [
             'title'             => 'Question 8/20',
             'content'           => 'Quel casque envisagez-vous d’acheter dans un futur proche ?',
             'type'              => 'A',
-            'possible_answer'   => 'Occulus Quest, Occulus Go, HTC Vive Pro, PSVR, Autre, Aucun'
+            'possible_answer'   => 'Occulus Quest,Occulus Go,HTC Vive Pro,PSVR,Autre,Aucun'
         ],
         [
             'title'             => 'Question 9/20',
@@ -66,7 +66,7 @@ class QuestionSeeder extends Seeder
             'title'             => 'Question 10/20',
             'content'           => 'Vous utilisez principalement Bigscreen pour :',
             'type'              => 'A',
-            'possible_answer'   => 'regarder la TV en direct, regarder des films, travailler, jouer en solo, jouer en équipe'
+            'possible_answer'   => 'regarder la TV en direct,regarder des films,travailler,jouer en solo,jouer en équipe'
         ],
         [
             'title'             => 'Question 11/20',
@@ -102,25 +102,25 @@ class QuestionSeeder extends Seeder
             'title'             => 'Question 16/20',
             'content'           => 'Aimeriez vous avoir des notifications plus précises au cours de vos sessions Bigscreen ?',
             'type'              => 'A',
-            'possible_answer'   => 'Oui, Non'
+            'possible_answer'   => 'Oui,Non'
         ],
         [
             'title'             => 'Question 17/20',
             'content'           => 'Aimeriez vous pouvoir inviter un ami à rejoindre votre session via son smartphone ?',
             'type'              => 'A',
-            'possible_answer'   => 'Oui, Non'
+            'possible_answer'   => 'Oui,Non'
         ],
         [
             'title'             => 'Question 18/20',
             'content'           => 'Aimeriez vous pouvoir enregistrer des émissions TV pour pouvoir les regarder ultérieurement ?',
             'type'              => 'A',
-            'possible_answer'   => 'Oui, Non'
+            'possible_answer'   => 'Oui,Non'
         ],
         [
             'title'             => 'Question 19/20',
             'content'           => 'Aimeriez-vous jouer à des jeux exclusifs sur votre Bigscreen ?',
             'type'              => 'A',
-            'possible_answer'   => 'Oui, Non'
+            'possible_answer'   => 'Oui,Non'
         ],
         [
             'title'             => 'Question 20/20',
