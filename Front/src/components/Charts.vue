@@ -1,6 +1,6 @@
 <template>
      <div id="chart">
-        <apexchart type="pie" width="500" :options="chartOptions" :series="series"></apexchart>
+        <apexchart type="pie" width="450" :options="chartOptions" :series="series"></apexchart>
       </div>
   </template>
   
@@ -13,15 +13,15 @@
         series: [30, 7, 40, 20, 22],
           chartOptions: {
             chart: {
-              width: 500,
+              width: 450,
               type: 'pie',
             },
             labels: ['Oculus Quest', 'Oculus Rift/s', 'HTC Vive', 'Windows Mixed Reality', 'Valve index'],
             responsive: [{
-              breakpoint: 480,
+              breakpoint: 100,
               options: {
                 chart: {
-                  width: 200
+                  width: 100
                 },
                 legend: {
                   position: 'bottom'
