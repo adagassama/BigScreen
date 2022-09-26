@@ -33,3 +33,4 @@ Route::apiResource('visitors',VisitorController::class);
 Route::get('results/{url}',[AnswerController::class,'getVisitorResponse']);
 
 Route::get('getPieChart/{id}',[BackController::class,'getPieChart']);
+Route::get('getRadarChart',[BackController::class,'getRadarChart']);
