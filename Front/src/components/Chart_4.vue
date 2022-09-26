@@ -5,12 +5,20 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
+  mounted() {
+      //API Call
+      axios.get("http://127.0.0.1:8000/api/getRadarChart").then((res) => {
+        this.series[0].data = res.data;
+        console.log(this.series);
+      });
+    },
     data(){
         return{
             series: [{
             name: 'Series 1',
-            data: [80, 50, 30, 40, 100, 20],
+            data: [],
           }],
           chartOptions: {
             chart: {
@@ -18,7 +26,7 @@ export default {
               type: 'radar',
             },
             xaxis: {
-              categories: ['January', 'February', 'March', 'April', 'May', 'June'],
+              categories: ['Qualité de l\'image', 'Confort de l\'utilisation', 'Connection réseau', 'Qualité des graphismes', 'Qualité audio'],
               labels: {
                     show: true,
                     style: {
