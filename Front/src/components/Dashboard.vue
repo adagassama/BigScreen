@@ -16,7 +16,7 @@
             </ul>
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="#" class="download">Déconnexion</a>
+                    <a href="#" class="download" @click.prevent="logout">Déconnexion</a>
                 </li>
             </ul>
         </nav>
@@ -26,8 +26,8 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle</span>
+                        <i class="fas fa-align-left fs-3"></i>
+                       
                     </button>
                 </div>
             </nav>
@@ -44,18 +44,35 @@ import Accueil from './Accueil.vue';
 import Questionnaire from './Questionnaire.vue';
 import Reponse from './Reponse.vue';
 import axios from "axios";
+import Swal from "sweetalert2";
 window.axios = axios;
+
 
 export default {
     data(){
         return{
-            page:1
+            page:1,
+            token: localStorage.getItem('token')
         }
     },
     methods: {
         display(k){
             this.page = k;
-        }
+        },
+        logout(){
+              axios.post('http://127.0.0.1:8000/api/logout').then((response) => {
+                    localStorage.removeItem('token')
+                    Swal.fire({
+                      title: "Bigscreen !",
+                      html: `<p>${response.data.msg}</p>`,
+                      icon: "success",
+                    });
+                    this.$router.push("/login");
+                    
+                }).catch((errors) => {
+                    console.log(errors)
+                })
+            }
     },
     components:{
         Accueil, Questionnaire, Reponse

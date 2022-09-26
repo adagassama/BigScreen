@@ -1,10 +1,10 @@
 <template>
 <div class="container mr-0 ml-0 pl-0 pr-0">
-  <h2 class="text-center pt-4 pb-0 mb-0">Liste de Questionnaires</h2>
-  <div class="row py-5">
-    <div class="col-lg-10 mx-auto">
-      <div class="card  cardFirst rounded shadow border-1">
-        <div class="card-body p-5 bg-white rounded">
+  <h2 class="text-center pt-0 pb-4 mt-0 mb-4">Liste de Questionnaires</h2>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card  cardF rounded shadow border-1">
+        <div class="card-body cbody rounded">
           <div class="table-responsive">
             <table id="example" style="width:100%" class="table table-striped table-bordered">
               <thead>
@@ -57,12 +57,24 @@ export default {
 </script>
 
 <style>
-.cardFirst{
-    margin-left: 0;
-    margin-right: 0;
-    width:80% !important;
+.cbody{
+  width: 100% !important;
 }
 h2{
     color:dodgerblue;
-  }
+}
+@media screen and (min-width: 320px) {
+  .cardF{
+    margin-left: 0.5rem !important;
+    margin-right: 0;
+    width:100% !important;
+}
+}
+@media screen and (min-width: 992px) {
+  .cardF{
+    margin-left: 10% !important;
+    margin-right: 0;
+    width:80% !important;
+}
+}
 </style>

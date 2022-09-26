@@ -60,7 +60,7 @@ export default {
     -8px -8px 15px #fff;
 }
 .charts-first{
-  margin-left: 2% !important;
+  margin-left: 4% !important;
   margin-right: 0% !important;
   padding-right: 0% !important;
 }
@@ -68,14 +68,14 @@ export default {
   margin-left: 1% !important;
 }
 .charts-third{
-  margin-left: 2% !important;
+  margin-left: 4% !important;
 }
 .charts-last{
   margin-left: 1% !important;
 }
 @media screen and (min-width: 320px) {
   .card_charts {
-    width: 22rem !important;
+    width: 21rem !important;
   }
   .row{
     display: flex;
@@ -83,17 +83,17 @@ export default {
   }
 }
 @media screen and (min-width: 768px) {
-  .card-body {
-    width: 30rem !important;
+  .card_charts {
+    width: 18rem !important;
   }
   .row{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 @media screen and (min-width: 992px) {
-  .card-body {
-    width: 30rem;
+  .card_charts {
+    width: 22rem !important;
   }
   .row{
     display: flex;

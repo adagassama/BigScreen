@@ -11,29 +11,30 @@ import axios from "axios";
       //API Call
       axios.get("http://127.0.0.1:8000/api/getPieChart/7").then((res) => {
         this.series = res.data;
-        console.log(this.series);
       });
     },
     data(){
         return{
-            series: [],
+          series: [],
           chartOptions: {
             chart: {
               type: 'pie',
             },
             labels: ['SteamVR', 'Occulus store', 'Viveport', 'Windows store', ],
-            responsive: [{
-              breakpoint: 450,
+            legend: {
+              position: "right",  
+              fontSize: '12px',
+            },
+            responsive: [
+            {
+              breakpoint: 100,
               options: {
-                chart: {
-                  width: 200
-                },
                 legend: {
-                  position: 'bottom',
-              
-                }
+                  position:'bottom'
+                } 
               }
-            }]
+            }
+          ]
           },
         }
     }
