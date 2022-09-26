@@ -8,6 +8,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@fortawesome/vue-fontawesome": "^3.0.1",
     "apexcharts": "^3.35.5",
     "axios": "^0.27.2",
     "boostrap": "^2.0.0",
