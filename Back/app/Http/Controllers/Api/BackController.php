@@ -30,4 +30,16 @@ class BackController extends Controller
         //dd($stats);
         return $stats;
     }
+
+    public function getRadarChart()
+    {
+        $questionId = [11,12,13,14,15];
+        $stats = [];
+
+        foreach ($questionId as $id) {
+            $answersAvg = Answer::where('question_id', $id)->get()->avg('answer');
+            array_push($stats, $answersAvg);
+        }
+        return($stats);
+    }
 }
