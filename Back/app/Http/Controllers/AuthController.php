@@ -16,15 +16,15 @@ class AuthController extends Controller
             'password' => 'required',
             'device_name' => 'required',
         ]);
-    
+
         $user = User::where('email', $request->email)->first();
-    
+
         if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
-                'email' => ['Les informations identification fournies sont incorrectes'],
+                'msg' => 'Les informations d\'identification fournies sont incorrectes'
             ]);
         }
-    
+
         return $user->createToken($request->device_name)->plainTextToken;
     }
 
@@ -32,5 +32,5 @@ class AuthController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
         return response()->json(['msg' => 'Vous êtes bien déconnecté']);
-    } 
+    }
 }
