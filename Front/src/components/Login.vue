@@ -6,13 +6,12 @@
     <div class="logo_bigscreen"><img src="../assets/bigscreen_logo.png" alt="profil" /></div>
     
     <div class="form-field d-flex align-items-center">
-      <input type="text" name="email" v-model="formData.email" />
-      <p class="text-danger" v-text="errors.email"></p>
+      <input type="text" v-model="formData.email" />
     </div>
     <div class="form-field d-flex align-items-center">
       <input type="password" name="password" v-model="formData.password" />
-      <p class="text-danger" v-text="errors.password"></p>
     </div>
+    <p class="text-danger" v-text="errors.message"></p>
     <button @click="login" class="btn mt-3">- CONNEXION -</button>
   </div>
 </template>
@@ -39,7 +38,8 @@
             this.$router.push("/administration");
             })
             .catch((errors) => {
-            this.errors = errors.response.data.errors;
+            this.errors = errors.response.data;
+            console.log(this.errors);
             });
         },
     },
