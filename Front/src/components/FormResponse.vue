@@ -1,46 +1,33 @@
 <template>
-  <div class="mx-0 mx-sm-auto pt-4 pb-4 container">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="card-title text-white mt-2">
-          BIGSCREEN - RESULTAT DU SONDAGE
-        </h5>
-      </div>
-      <div class="modal-body">
-        <div class="text-center mt-3">
-          <div>
-            <strong
-              >Vous trouverez ci-dessous les réponses que vous apportées à notre
-              sondage le :</strong
-            >
-            <p class="pt-4">Ci dessous vos resultats</p>
+  <div class="survey">
+    <nav class="header mb-2">
+      <a href="/"><img src="../assets/bigscreen_logo.png" /></a>
+    </nav>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="survey_title">
+            <p>
+              <h5>
+                BIGSCREEN - RESULTAT DU SONDAGE
+              </h5>
+            </p>
           </div>
-        </div>
-
-        <hr />
-
-        <form class="px-4" action="">
-          <ul>
-            <li
-              v-for="answer in answers"
-              :key="answer.id"
-              style="list-style: none"
-              width="20"
-              class="pt-2 mb-4 border border-1"
-            >
-              <div>
-                <p class="text-left pt-4 mb-1 decompte">
-                  {{ answer.question.title }}
-                </p>
-                <p>{{ answer.question.content }}</p>
-
-                <div class="form-control div-reponse mb-2">
-                  <div class="div-rep">{{ answer.answer }}</div>
+          <form>
+            <div class="timeline">
+              <div
+                class="survey_card"
+                v-for="answer in answers"
+              >
+                <p class="survey_questions">{{ answer.question.title }}</p>
+                <p class="survey_label">{{ answer.question.content }}</p>
+                <div class="survey_answers"> 
+                  {{ answer.answer }}
                 </div>
               </div>
-            </li>
-          </ul>
-        </form>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -74,21 +61,147 @@ export default {
 </script>
 
 <style>
-.card {
-  width: 50%;
-  margin-left: 20rem;
-}
-.decompte {
-  font-size: 1rem;
-  font-weight: bold;
-}
-.card-header {
-  background-color: #03a9f4 !important;
-}
-.div-reponse {
-  border: 1px dashed !important;
-}
-.div-rep {
-  height: 20%;
-}
-</style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    object-fit: contain;
+    background-color: #2c3e50;
+    padding-left: 21%;
+    z-index: 10;
+  }
+  .header > a > img {
+    object-fit: contain;
+    width: 100%;
+    max-width: 450px;
+  }
+  @media (max-width: 500px) {
+    .header {
+      padding-left: 0%;
+    }
+  }
+  .survey_title {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  .survey_card {
+    padding: 20px;
+    border: none !important;
+    border-radius: none !important;
+    background-color: #ecf0f1;
+    margin-bottom: 8em;
+    position: relative;
+  }
+  .survey_active {
+    display: block;
+  }
+  .survey_buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .survey_buttons > .btn_survey {
+    background-color: #fff;
+    padding: 5px;
+    margin: 5px;
+    text-decoration: none;
+    color: #333;
+    border: 1px lightgray solid;
+  }
+  .btn_survey_active {
+    background-color: #fff;
+    padding: 5px;
+    margin: 5px;
+    text-decoration: none;
+    color: #333;
+    border: 1px lightgray solid;
+    display: block;
+  }
+  .survey_validations {
+    text-align: right;
+  }
+  .emailValidator {
+    background-color: #333;
+    color: white;
+    margin-top: 10px;
+    border-radius: 3px;
+  }
+  .emailValidator > p {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .survey_questions {
+    color: #333;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+  .survey_label {
+    color: #333;
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+  .survey_answers {
+    background: #fff;
+    padding: 10px;
+    /*border: 0.5px dashed #bdc3c7;*/
+  }
+  .survey_answers > textarea,
+  .survey_answers > input,
+  .survey_answers > select {
+    padding: 10px;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: none !important;
+    width: 100%;
+    border: 1px solid #bdc3c7;
+  }
+  
+  .survey_answers > input:focus,
+  .survey_answers > textarea:focus,
+  .survey_answers > select:focus {
+    outline: none;
+  }
+  /*  Refresh Container */
+  .refresh {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    z-index: 8;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  /* Refresh Loader */
+  .refresh > .refresh_loader {
+    width: 60px;
+    height: 60px;
+  }
+  /* Refresh Loader Hover  */
+  .refresh > .refresh_loader:hover {
+    transform: rotate(1080deg);
+    transition: all 2s; /* transition when the mouse over */
+  }
+  .refresh_loader:after {
+    content: "Recharger la page";
+    position: relative;
+    top: 120px;
+    left: -14px;
+    font-size: 1.25em;
+    font-family: helvetica, arial, sans-serif;
+    font-variant: small-caps;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 2s;
+  }
+  </style>
+  
