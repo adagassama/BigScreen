@@ -21,20 +21,17 @@ import axios from "axios";
               type: 'pie',
             },
             labels: ['SteamVR', 'Occulus store', 'Viveport', 'Windows store', ],
-            legend: {
-              position: "right",  
-              fontSize: '12px',
+            responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 280
             },
-            responsive: [
-            {
-              breakpoint: 100,
-              options: {
-                legend: {
-                  position:'bottom'
-                } 
-              }
+            legend: {
+              position: 'bottom'
             }
-          ]
+          }
+        }]
           },
         }
     }
