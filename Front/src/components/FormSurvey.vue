@@ -8,8 +8,10 @@
           <div class="col-md-8">
             <div class="survey_title">
               <p>
-                Merci de répondre à toutes les questions et de valider le
-                formulaire en bas de page.
+                <h5 class="card-title text-white mt-2">
+                  Merci de répondre à toutes les questions et de valider le
+                  formulaire en bas de page.
+                </h5>
               </p>
             </div>
             <form>
@@ -29,7 +31,6 @@
                   >
                     <input
                       maxlength="255"
-                      required=""
                       type="email"
                       :name="'rep' + question.id"
                       v-model="formData[index].answer"
@@ -37,20 +38,18 @@
                   </div>
                   <div class="survey_answers" v-else-if="question.type == 'B'">
                     <input
-                      required=""
                       :name="'rep' + question.id"
                       v-model="formData[index].answer"
                     />
                   </div>
-                  <div class="survey_answers" v-else-if="question.type == 'C'">
-                    <select
-                      v-model="formData[index].answer"
-                      :name="'rep' + question.id"
-                    >
-                      <option v-for="n in 5" :key="n.id" :value="n">
-                        {{ n }}
-                      </option>
-                    </select>
+                  <div class="survey_answers radio-answer" v-else-if="question.type == 'C'">
+                    <div v-for="n in 5" :key="n.id" >
+                      <span>
+                        <input type="radio"  v-model="formData[index].answer"
+                        :name="'rep' + question.id" :value="n" />
+                        <label> {{n}}</label>
+                      </span>  
+                    </div>  
                   </div>
                   <div v-else>
                     <section>
@@ -72,12 +71,12 @@
                   </div>
                 </div>
               </div>
-            </form>
-            <div class="card-footer text-end">
+              <div class="card-footer text-end">
               <button @click.prevent="create" class="btn btn-primary">
                 Finaliser
               </button>
             </div>
+            </form>
           </div>
         </div>
       </div>
@@ -96,7 +95,7 @@ export default {
       this.questions = res.data.data;
       console.log(this.questions);
       this.formData = this.questions.map((question) => {
-        return { question_id: question.id, answer: "" };
+        return { question_id: question.id, answer:''};
       });
     });
   },
@@ -107,21 +106,26 @@ export default {
         email: "",
       },
       formData: [],
+      test:{}
     };
   },
   methods: {
     // Ajout des résultats d'un sondage
     create() {
-      let blag = new FormData();
-      this.formData.forEach((element) => {
-        blag.append("formData[]", JSON.stringify(element));
-      });
+      // let blag = new FormData();
+      // this.formData.forEach((element) => {
+      //   blag.append("formData[]", JSON.stringify(element));
+      // });
+
+      const userAnswers = {answersArray:this.formData};
+
+      console.log(userAnswers);
       axios
-        .post("http://127.0.0.1:8000/api/answers", blag)
+        .post("http://127.0.0.1:8000/api/answers", userAnswers)
         .then((response) => {
           console.log(response);
           Swal.fire({
-            title: "Good Job !",
+            title: "Bigscreen !",
             html: `<p>${response.data.text}</p>
                              <a href="/response/${response.data.url}">Voir mes réponses</a>`,
             icon: "success",
@@ -277,5 +281,10 @@ export default {
   color: #fff;
   opacity: 0;
   transition: opacity 2s;
+}
+.radio-answer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 </style>
