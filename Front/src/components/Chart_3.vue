@@ -23,17 +23,16 @@ import axios from "axios";
             },
             labels: ['TV en direct ', ' films', ' travailler', ' solo', 'équipe '],
             responsive: [{
-              breakpoint: 200,
-              options: {
-                chart: {
-                  width:70
-                },
-                legend: {
-                  position: 'bottom',
-              
-                }
-              }
-            }]
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 280
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
           },
           
      }

@@ -15,13 +15,10 @@
           </div>
           <form>
             <div class="timeline">
-              <div
-                class="survey_card"
-                v-for="answer in answers"
-              >
+              <div class="survey_card" v-for="answer in answers">
                 <p class="survey_questions">{{ answer.question.title }}</p>
                 <p class="survey_label">{{ answer.question.content }}</p>
-                <div class="survey_answers"> 
+                <div class="survey_answers answer-border"> 
                   {{ answer.answer }}
                 </div>
               </div>
@@ -150,7 +147,10 @@ export default {
   .survey_answers {
     background: #fff;
     padding: 10px;
-    /*border: 0.5px dashed #bdc3c7;*/
+  }
+  .answer-border{
+    border: dashed;
+    border-radius: 1%;
   }
   .survey_answers > textarea,
   .survey_answers > input,
