@@ -25,16 +25,16 @@
           },
           labels: ['Oculus Quest', 'Oculus Rift/s', 'HTC Vive', 'Windows Mixed Reality', 'Valve index'],
           responsive: [{
-            breakpoint: 100,
-            options: {
-              chart: {
-                width: 100
-              },
-              legend: {
-                position: "bottom"
-              }
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 280
+            },
+            legend: {
+              position: 'bottom'
             }
-          }]
+          }
+        }]
         },
       }
     },
