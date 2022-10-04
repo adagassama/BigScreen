@@ -13,6 +13,9 @@
                   formulaire en bas de page.
                 </h5>
               </p>
+              <p v-if="this.msg !== ''" class="card-title error p-2 mb-5 bg-light text-center col-lg-12 m-auto">
+                {{ this.msg }}
+              </p>
             </div>
             <form>
               <div class="timeline">
@@ -102,24 +105,23 @@ export default {
   data() {
     return {
       questions: [],
-      formD: {
-        email: "",
-      },
       formData: [],
-      test:{}
+      answers: {},
+      errors:[],
+      msg:""
     };
   },
   methods: {
     // Ajout des résultats d'un sondage
     create() {
-      // let blag = new FormData();
-      // this.formData.forEach((element) => {
-      //   blag.append("formData[]", JSON.stringify(element));
-      // });
 
-      const userAnswers = {answersArray:this.formData};
+      this.formData.forEach(element => {
+          this.answers[element.question_id] = element.answer;
+        });
 
+      const userAnswers = {answersArray:this.answers};
       console.log(userAnswers);
+
       axios
         .post("http://127.0.0.1:8000/api/answers", userAnswers)
         .then((response) => {
@@ -132,7 +134,10 @@ export default {
           });
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error)
+          if (error.response.status == 422) {
+            this.msg = error.response.data.msg
+          }
         });
     },
   },
@@ -286,5 +291,10 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+.error {
+  color: black;
+  font-size: 1em;
+  font-weight: 400;
 }
 </style>
