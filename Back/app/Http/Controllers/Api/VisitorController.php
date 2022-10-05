@@ -11,11 +11,16 @@ class VisitorController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        
+        $visitor = Visitor::all();
+        return response()->json([
+            'success' => true,
+            'message' => 'Liste de touts les visiteurs',
+            'data' => $visitor
+        ], 200);
     }
 
     /**
