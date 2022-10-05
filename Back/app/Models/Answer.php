@@ -15,6 +15,6 @@ class Answer extends Model
     }
 
     public function visitor(){
-        return $this->belongsTo(Visitor::class);
+        return $this->belongsTo(Visitor::class, 'visitor_id');
     }
 }
