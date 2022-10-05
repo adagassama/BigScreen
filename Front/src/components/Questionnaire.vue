@@ -16,11 +16,10 @@
               </thead>
               <tbody>
                 <tr v-for="question in questions" :key="question.id" style="list-style:none">
-                  <td class="col-3">{{question.title}}</td>
+                  <td class="col-3 text-center">{{question.id}}</td>
                   <td class="col-6">{{question.content}}</td>
                   <td class="col-8 text-center">{{question.type}}</td>
                 </tr>
-                
               </tbody>
             </table>
           </div>
