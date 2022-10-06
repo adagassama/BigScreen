@@ -25,7 +25,7 @@ class AnswerController extends Controller
             'data' => $answer
         ], 200);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -91,7 +91,7 @@ class AnswerController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Réponses Visitor',
-            'data' => $visitorResponse,
+            'data' => $visitorResponse,$visitor
         ], 200);
     }
 
