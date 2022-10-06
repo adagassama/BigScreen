@@ -5,13 +5,14 @@
     </nav>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
           <div class="survey_title">
             <p>
-              <h5>
-                BIGSCREEN - RESULTAT DU SONDAGE
-              </h5>
-            </p>
+                <h5 class="card-title text-white mt-2">
+                  Vous trouverez ci-dessous les réponses que vous avez apportées à
+                  notre sondage le: {{ formatDate(visitor.created_at) }}
+                </h5>
+              </p>
           </div>
           <form>
             <div class="timeline">
@@ -32,6 +33,7 @@
 
 <script>
 import axios from "axios";
+import dayjs from 'dayjs';
 import { useRoute } from "vue-router";
 export default {
   mounted() {
@@ -43,7 +45,8 @@ export default {
       .get(`http://127.0.0.1:8000/api/results/${url}`)
       .then((res) => {
         this.answers = res.data.data;
-        console.log(this.answers);
+        this.visitor = res.data[0];
+        console.log(this.visitor);
       })
       .catch((error) => {
         console.log(error);
@@ -52,8 +55,15 @@ export default {
   data() {
     return {
       answers: [],
+      visitor: []
     };
   },
+  methods: {
+        formatDate(dateString) {
+            const date = dayjs(dateString);
+            return date.format('	DD/MM/YYYY à hh:mm ');
+        }
+    }
 };
 </script>
 
@@ -136,12 +146,12 @@ export default {
   }
   .survey_questions {
     color: #333;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 600;
   }
   .survey_label {
     color: #333;
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: 500;
   }
   .survey_answers {
