@@ -22,7 +22,7 @@ class AnswerController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Liste de toutes les réponses',
-            'data' => $answer
+            'data' => $answer,
         ], 200);
     }
 
@@ -38,7 +38,7 @@ class AnswerController extends Controller
             'answersArray.*' => 'required',
             'answersArray.1' => 'email',
             'answersArray.2' => 'numeric',
-        ],[
+        ], [
             'answersArray.*.required' => 'Veuillez renseigner tous les champs',
             'answersArray.1.email' => 'Veuillez rentrer une adresse mail valide',
             'answersArray.2.numeric' => 'Veuillez rentrer un entier pour l\'age',
@@ -46,18 +46,17 @@ class AnswerController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'msg' => $validator->errors()->first()
+                'msg' => $validator->errors()->first(),
             ], 422);
-        }
-        else {
-            foreach ($request->answersArray as $key => $value ) {
+        } else {
+            foreach ($request->answersArray as $key => $value) {
                 if ($key == 1) {
                     $email = $value;
                     $visitor = Visitor::where('email', $email)->first();
                     if (!empty($visitor)) {
-                        return response()->json(['msg' => 'Vous avez déjà participé à notre enqûete avec cette email'],422);
+                        return response()->json(['msg' => 'Vous avez déjà participé à notre enqûete avec cette email'], 422);
 
-                    }else{
+                    } else {
                         $user = new Visitor();
                         $user->email = $value;
                         $user->url = Str::random(20);
@@ -76,7 +75,7 @@ class AnswerController extends Controller
                                                         facile à utiliser, seul ou en famille.<br>
                                                         Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
                                                         cette adresse:',
-                                    'url'  =>  $user->url]);
+                'url' => $user->url]);
         }
 
     }
@@ -85,13 +84,13 @@ class AnswerController extends Controller
     {
         $visitor = Visitor::where('url', $url)->first();
         $visitorResponse = Answer::where('visitor_id', $visitor->id)
-                                ->with('question')
-                                ->get();
+            ->with('question')
+            ->get();
 
         return response()->json([
             'success' => true,
             'message' => 'Réponses Visitor',
-            'data' => $visitorResponse,$visitor
+            'data' => $visitorResponse, $visitor,
         ], 200);
     }
 

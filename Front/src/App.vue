@@ -1,15 +1,10 @@
 <script setup>
-
-import { RouterLink, RouterView } from 'vue-router'
-import SurveyView from './views/SurveyView.vue';
-
+import { RouterLink, RouterView } from "vue-router";
+import SurveyView from "./views/SurveyView.vue";
 </script>
 
 <template>
- 
-<RouterView/>
-
-
+  <RouterView />
 </template>
 
 <style scoped>

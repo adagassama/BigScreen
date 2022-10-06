@@ -3,12 +3,10 @@
 </template>
 
 <script>
-import FormSurvey from '../components/FormSurvey.vue';
+import FormSurvey from "../components/FormSurvey.vue";
 export default {
-    components: { FormSurvey }
-}
+  components: { FormSurvey },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

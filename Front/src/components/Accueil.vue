@@ -3,14 +3,12 @@
 </template>
 
 <script>
-  import Cards from './Cards.vue'
+import Cards from "./Cards.vue";
 export default {
-components:{
-  Cards
-}
-}
+  components: {
+    Cards,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

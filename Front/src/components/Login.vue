@@ -3,8 +3,10 @@
     <div class="logo">
       <img src="../assets/profil.png" alt="profil" />
     </div>
-    <div class="logo_bigscreen"><img src="../assets/bigscreen_logo.png" alt="profil" /></div>
-    
+    <div class="logo_bigscreen">
+      <img src="../assets/bigscreen_logo.png" alt="profil" />
+    </div>
+
     <div class="form-field d-flex align-items-center">
       <input type="text" v-model="formData.email" />
     </div>
@@ -17,33 +19,33 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    export default {
-    data() {
-        return {
-        formData: {
-            email: "",
-            password: "",
-            device_name: "browser",
-        },
-        errors: {},
-        };
-    },
-    methods: {
-        login() {
-        axios
-            .post("http://127.0.0.1:8000/api/login", this.formData)
-            .then((response) => {
-            localStorage.setItem("token", response.data);
-            this.$router.push("/administration");
-            })
-            .catch((errors) => {
-            this.errors = errors.response.data;
-            console.log(this.errors);
-            });
-        },
-    },
+import axios from "axios";
+export default {
+  data() {
+    return {
+      formData: {
+        email: "",
+        password: "",
+        device_name: "browser",
+      },
+      errors: {},
     };
+  },
+  methods: {
+    login() {
+      axios
+        .post("http://127.0.0.1:8000/api/login", this.formData)
+        .then((response) => {
+          localStorage.setItem("token", response.data);
+          this.$router.push("/administration");
+        })
+        .catch((errors) => {
+          this.errors = errors.response.data;
+          console.log(this.errors);
+        });
+    },
+  },
+};
 </script>
 
 <style>

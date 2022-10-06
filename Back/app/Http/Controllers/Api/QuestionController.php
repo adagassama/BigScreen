@@ -19,7 +19,7 @@ class QuestionController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'List des questions',
-            'data' => $question
+            'data' => $question,
         ], 200);
 
     }

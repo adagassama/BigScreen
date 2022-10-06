@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+ */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -26,10 +26,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::apiResource('questions',QuestionController::class);
-Route::apiResource('answers',AnswerController::class);
-Route::apiResource('visitors',VisitorController::class);
+Route::apiResource('questions', QuestionController::class);
+Route::apiResource('answers', AnswerController::class);
+Route::apiResource('visitors', VisitorController::class);
 
-Route::get('results/{url}',[AnswerController::class,'getVisitorResponse']);
-Route::get('getPieChart/{id}',[BackController::class,'getPieChart']);
-Route::get('getRadarChart',[BackController::class,'getRadarChart']);
+Route::get('results/{url}', [AnswerController::class, 'getVisitorResponse']);
+Route::get('getPieChart/{id}', [BackController::class, 'getPieChart']);
+Route::get('getRadarChart', [BackController::class, 'getRadarChart']);

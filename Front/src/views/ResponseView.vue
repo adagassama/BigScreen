@@ -3,12 +3,10 @@
 </template>
 
 <script>
-import FormResponse from '../components/FormResponse.vue';
+import FormResponse from "../components/FormResponse.vue";
 export default {
-    components: { FormResponse }
-}
+  components: { FormResponse },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

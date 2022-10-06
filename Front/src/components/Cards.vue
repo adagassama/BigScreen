@@ -4,12 +4,12 @@
       <div class="col-md-6 col-xs-2">
         <div class="card card_charts charts-first">
           <div class="card-body">
-            <Charts></Charts>    
+            <Charts></Charts>
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-xs-2 ">
-        <div class=" card card_charts charts-second">  
+      <div class="col-md-6 col-xs-2">
+        <div class="card card_charts charts-second">
           <div class="card-body">
             <Chart_2></Chart_2>
           </div>
@@ -24,11 +24,9 @@
       </div>
 
       <div class="col-md-6">
-        <div class="card card_charts charts-last" style="height: 17rem;">
-          
+        <div class="card card_charts charts-last" style="height: 17rem">
           <div class="card-body p-0">
             <Chart_4></Chart_4>
-            
           </div>
         </div>
       </div>
@@ -43,7 +41,7 @@ import Chart_2 from "./Chart_2.vue";
 import Chart_3 from "./Chart_3.vue";
 
 export default {
-    components: { Charts, Chart_4, Chart_2, Chart_3 }
+  components: { Charts, Chart_4, Chart_2, Chart_3 },
 };
 </script>
 
@@ -53,31 +51,30 @@ export default {
 }
 
 .card_charts {
-  
   border: none;
   margin-bottom: 2rem;
   box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7,
     -8px -8px 15px #fff;
 }
-.charts-first{
+.charts-first {
   margin-left: 4% !important;
   margin-right: 0% !important;
   padding-right: 0% !important;
 }
-.charts-second{
+.charts-second {
   margin-left: 1% !important;
 }
-.charts-third{
+.charts-third {
   margin-left: 4% !important;
 }
-.charts-last{
+.charts-last {
   margin-left: 1% !important;
 }
 @media screen and (min-width: 320px) {
   .card_charts {
     width: 21rem !important;
   }
-  .row{
+  .row {
     display: flex;
     flex-direction: column;
   }
@@ -86,7 +83,7 @@ export default {
   .card_charts {
     width: 18rem !important;
   }
-  .row{
+  .row {
     display: flex;
     flex-direction: row;
   }
@@ -95,13 +92,13 @@ export default {
   .card_charts {
     width: 22rem !important;
   }
-  .row{
+  .row {
     display: flex;
     flex-direction: row;
   }
 }
 @media screen and (min-width: 1200px) {
-  .row{
+  .row {
     display: flex;
     flex-direction: row;
   }

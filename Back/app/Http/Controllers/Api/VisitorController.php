@@ -19,7 +19,7 @@ class VisitorController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Liste de touts les visiteurs',
-            'data' => $visitor
+            'data' => $visitor,
         ], 200);
     }
 
