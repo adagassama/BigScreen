@@ -5,7 +5,7 @@
       </nav>
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-8">
+          <div class="col-md-6">
             <div class="survey_title">
               <p>
                 <h5 class="card-title text-white mt-2">
@@ -129,7 +129,7 @@ export default {
           Swal.fire({
             title: "Bigscreen !",
             html: `<p>${response.data.text}</p>
-                             <a href="/response/${response.data.url}">Voir mes réponses</a>`,
+                             <a href="/response/${response.data.url}">http://localhost:5173/response/${response.data.url}</a>`,
             icon: "success",
           });
         })
@@ -222,15 +222,15 @@ export default {
   padding-right: 5px;
 }
 .survey_questions {
-  color: #333;
-  font-size: 1.5em;
-  font-weight: 600;
-}
-.survey_label {
-  color: #333;
-  font-size: 1.2em;
-  font-weight: 500;
-}
+    color: #333;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  .survey_label {
+    color: #333;
+    font-size: 1.3em;
+    font-weight: 500;
+  }
 .survey_answers {
   background: #fff;
   padding: 10px;
