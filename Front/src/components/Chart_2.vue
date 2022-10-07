@@ -1,7 +1,7 @@
 <template>
   <div id="chart">
     <apexchart
-      width="400"
+      width="430"
       type="pie"
       :options="chartOptions"
       :series="series"
@@ -23,6 +23,7 @@ export default {
       series: [],
       chartOptions: {
         chart: {
+          width:430,
           type: "pie",
         },
         labels: ["SteamVR", "Occulus store", "Viveport", "Windows store"],

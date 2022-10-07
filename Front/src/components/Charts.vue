@@ -2,7 +2,7 @@
   <div id="chart">
     <apexchart
       type="pie"
-      width="450"
+      width="470"
       :options="chartOptions"
       :series="series"
     ></apexchart>
@@ -16,7 +16,6 @@ export default {
     //API Call
     axios.get("http://127.0.0.1:8000/api/getPieChart/6").then((res) => {
       this.series = res.data;
-      console.log(this.series);
     });
   },
   name: "Chart",
@@ -25,7 +24,7 @@ export default {
       series: [],
       chartOptions: {
         chart: {
-          width: 450,
+          width: 470,
           type: "pie",
         },
         labels: [
@@ -40,7 +39,7 @@ export default {
             breakpoint: 480,
             options: {
               chart: {
-                width: 280,
+                width: 287,
               },
               legend: {
                 position: "bottom",

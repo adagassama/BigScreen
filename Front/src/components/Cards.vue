@@ -24,7 +24,7 @@
       </div>
 
       <div class="col-md-6">
-        <div class="card card_charts charts-last" style="height: 17rem">
+        <div class="card card_charts charts-last" style="height: 18rem">
           <div class="card-body p-0">
             <Chart_4></Chart_4>
           </div>
@@ -46,9 +46,7 @@ export default {
 </script>
 
 <style>
-:root {
-  --gradient: linear-gradient(to left top, #dd2476 10%, #ff512f 90%) !important;
-}
+
 
 .card_charts {
   border: none;
@@ -58,21 +56,35 @@ export default {
 }
 .charts-first {
   margin-left: 4% !important;
-  margin-right: 0% !important;
-  padding-right: 0% !important;
 }
-.charts-second {
-  margin-left: 1% !important;
+.card-body{
+  padding-left: 0;
+  align-items: center;
 }
 .charts-third {
   margin-left: 4% !important;
 }
 .charts-last {
+  
+}
+@media screen and (min-width: 100px) {
+  .card_charts {
+    width: 15rem !important;
+  }
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+  .charts-third {
   margin-left: 1% !important;
+  }
+  .charts-first {
+  margin-left: 1% !important;
+  }
 }
 @media screen and (min-width: 320px) {
   .card_charts {
-    width: 21rem !important;
+    width: 19rem !important;
   }
   .row {
     display: flex;
@@ -81,11 +93,11 @@ export default {
 }
 @media screen and (min-width: 768px) {
   .card_charts {
-    width: 18rem !important;
+    width: 30rem !important;
   }
   .row {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
 }
 @media screen and (min-width: 992px) {
