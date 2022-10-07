@@ -1,7 +1,7 @@
 <template>
   <div id="chart">
     <apexchart
-      width="400"
+      width="410"
       type="pie"
       :options="chartOptions"
       :series="series"
@@ -16,7 +16,6 @@ export default {
     //API Call
     axios.get("http://127.0.0.1:8000/api/getPieChart/10").then((res) => {
       this.series = res.data;
-      console.log(this.series);
     });
   },
   data: function () {
@@ -25,6 +24,7 @@ export default {
       chartOptions: {
         chart: {
           type: "pie",
+          width:410,
         },
         labels: ["TV en direct ", " films", " travailler", " solo", "équipe "],
         responsive: [

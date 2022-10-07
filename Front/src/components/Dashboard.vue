@@ -20,7 +20,7 @@
       </ul>
       <ul class="list-unstyled CTAs">
         <li>
-          <a href="#" class="download" @click.prevent="logout">Déconnexion</a>
+          <a href="#" class="download" @click.prevent="logout" aria-label="bouton de deconnexion">Déconnexion</a>
         </li>
       </ul>
     </nav>
@@ -29,7 +29,7 @@
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-          <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <button type="button" id="sidebarCollapse" class="btn btn-info" aria-label="menu resposive">
             <i class="fas fa-align-left fs-3"></i>
           </button>
         </div>
@@ -190,7 +190,7 @@ ul.CTAs {
 
 ul.CTAs a {
   text-align: center;
-  font-size: 0.9em !important;
+  font-size: 0.9em ;
   display: block;
   border-radius: 5px;
   margin-bottom: 5px;
@@ -198,7 +198,9 @@ ul.CTAs a {
 
 a.download {
   background: #fff;
-  color: #7386d5 !important;
+  color: #141b35 !important;
+  font-weight: bold;
+  font-size: 1.1rem !important;
 }
 
 /* ---------------------------------------------------

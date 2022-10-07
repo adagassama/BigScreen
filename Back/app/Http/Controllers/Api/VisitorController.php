@@ -15,6 +15,8 @@ class VisitorController extends Controller
      */
     public function index()
     {
+        /** Méthode permettant de récupérer la liste de tous les visiteurs 
+         * ayant participer au Sondage */
         $visitor = Visitor::all();
         return response()->json([
             'success' => true,

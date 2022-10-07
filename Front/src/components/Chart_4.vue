@@ -2,8 +2,8 @@
   <div id="chart">
     <apexchart
       type="radar"
-      width="400"
-      height="300"
+      width="450"
+      height="350"
       :options="chartOptions"
       :series="series"
     ></apexchart>
@@ -17,7 +17,6 @@ export default {
     //API Call
     axios.get("http://127.0.0.1:8000/api/getRadarChart").then((res) => {
       this.series[0].data = res.data;
-      console.log(this.series);
     });
   },
   data() {
@@ -30,7 +29,8 @@ export default {
       ],
       chartOptions: {
         chart: {
-          height: 300,
+          height:350,
+          width: 500,
           type: "radar",
         },
         xaxis: {
@@ -50,6 +50,16 @@ export default {
             },
           },
         },
+        responsive: [
+          {
+            breakpoint: 400,
+            options: {
+              chart: {
+                width: 280,
+              },
+            },
+          },
+        ],
       },
     };
   },
