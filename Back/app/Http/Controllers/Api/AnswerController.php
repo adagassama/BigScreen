@@ -16,6 +16,8 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+     //Méthode permettant de récupérer toutes les réponses 
     public function index()
     {
         $answer = Answer::with('question')->get();
@@ -79,7 +81,8 @@ class AnswerController extends Controller
         }
 
     }
-
+    /** Méthode permettant de récupérer les résultats au sondage
+         *  d'un visiteur via un URL unique  */
     public function getVisitorResponse($url)
     {
         $visitor = Visitor::where('url', $url)->first();
