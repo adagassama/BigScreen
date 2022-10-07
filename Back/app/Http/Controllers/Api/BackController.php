@@ -8,7 +8,10 @@ use App\Models\Question;
 
 class BackController extends Controller
 {
-    /** Get pie charts by user counted and answers with id*/
+    /** 
+     * Fonction pour la gestion des Pie charts pour les réponses
+     * des questions 6, 7 et 10
+    */
     protected function getPieChart($id)
     {
         $answers = Answer::where('question_id', $id)->get();
@@ -17,7 +20,6 @@ class BackController extends Controller
         $stats = [];
 
         foreach ($options as $option) {
-
             $count = 0;
             foreach ($answers as $answer) {
                 if ($answer->answer == $option) {
@@ -27,10 +29,10 @@ class BackController extends Controller
             array_push($stats, $count);
 
         }
-        //dd($stats);
         return $stats;
     }
 
+    /**Méthode permettant de dynamiser le Radar chart dans le dashboard */
     public function getRadarChart()
     {
         $questionId = [11, 12, 13, 14, 15];
