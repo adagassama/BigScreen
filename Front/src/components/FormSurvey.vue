@@ -1,18 +1,18 @@
 <template>
     <div class="survey">
       <nav class="header mb-2">
-        <a href="/"><img src="../assets/bigscreen_logo.png" /></a>
+        <a href="/"><img src="../assets/bigscreen_logo.png" alt="image logo" /></a>
       </nav>
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-6">
             <div class="survey_title">
-              <p>
+              <div class="pb-4">
                 <h5 class="card-title text-white mt-2">
                   Merci de répondre à toutes les questions et de valider le
                   formulaire en bas de page.
                 </h5>
-              </p>
+              </div>
               <p v-if="this.msg !== ''" class="card-title error p-2 mb-5 bg-light text-center col-lg-12 m-auto">
                 {{ this.msg }}
               </p>
@@ -26,7 +26,8 @@
                   style="list-style: none"
                 >
                   <p class="survey_questions">{{ question.title }}</p>
-                  <p class="survey_label">{{ question.content }}</p>
+                  <hr/>
+                  <p class="survey_label fs-4">{{ question.content }}</p>
 
                   <div
                     class="survey_answers"
@@ -37,20 +38,21 @@
                       type="email"
                       :name="'rep' + question.id"
                       v-model="formData[index].answer"
+                      aria-label = "email"
                     />
                   </div>
                   <div class="survey_answers" v-else-if="question.type == 'B'">
                     <input
                       :name="'rep' + question.id"
-                      v-model="formData[index].answer"
+                      v-model="formData[index].answer" aria-label = "champs de saisit"
                     />
                   </div>
                   <div class="survey_answers radio-answer" v-else-if="question.type == 'C'">
                     <div v-for="n in 5" :key="n.id" >
                       <span>
                         <input type="radio"  v-model="formData[index].answer"
-                        :name="'rep' + question.id" :value="n" />
-                        <label> {{n}}</label>
+                        :name="'rep' + question.id" :value="n" aria-label = "choix de 1 5" />
+                        <label class="label"> {{n}}</label>
                       </span>  
                     </div>  
                   </div>
@@ -75,7 +77,7 @@
                 </div>
               </div>
               <div class="card-footer text-end">
-              <button @click.prevent="create" class="btn btn-primary">
+              <button @click.prevent="create" class="btn btn-primary" aria-label="bouton Finaliser">
                 Finaliser
               </button>
             </div>
@@ -87,16 +89,12 @@
 </template>
 
 <script>
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
 import axios from "axios";
-import Swal from "sweetalert2";
 export default {
   mounted() {
     //API Call
     axios.get("http://127.0.0.1:8000/api/questions").then((res) => {
       this.questions = res.data.data;
-      console.log(this.questions);
       this.formData = this.questions.map((question) => {
         return { question_id: question.id, answer:''};
       });
@@ -120,12 +118,9 @@ export default {
         });
 
       const userAnswers = {answersArray:this.answers};
-      console.log(userAnswers);
-
       axios
         .post("http://127.0.0.1:8000/api/answers", userAnswers)
         .then((response) => {
-          console.log(response);
           Swal.fire({
             title: "Bigscreen !",
             html: `<p>${response.data.text}</p>
@@ -158,6 +153,9 @@ export default {
   object-fit: contain;
   width: 100%;
   max-width: 450px;
+}
+.label{
+  margin-left: 5px;
 }
 @media (max-width: 500px) {
   .header {
