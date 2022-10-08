@@ -15,7 +15,7 @@ class VisitorController extends Controller
      */
     public function index()
     {
-        /** Méthode permettant de récupérer la liste de tous les visiteurs 
+        /** Méthode permettant de récupérer la liste de tous les visiteurs
          * ayant participer au Sondage */
         $visitor = Visitor::all();
         return response()->json([
@@ -33,18 +33,7 @@ class VisitorController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'email' => ['required'],
-        ]);
-        $visitor = Visitor::create([
-            'email' => $request->email,
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Visitor created',
-            'data' => $visitor,
-        ], 201);
+        //
     }
 
     /**
