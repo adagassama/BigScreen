@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Visitor extends Model
 {
     use HasFactory;
-    protected $fillable = ['email','url'];
+    protected $fillable = ['email','token'];
     public function answers(){
         return $this->hasMany(Answer::class);
     }
