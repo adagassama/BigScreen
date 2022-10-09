@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <!-- Sidebar  -->
-    <nav id="sidebar" >
+    <nav id="sidebar"  v-bind:class="{ active: isActive }">
       <ul class="list-unstyled components pt-5 mt-5 text-center">
         <img
           src="../assets/bigscreen_logo.png"
@@ -30,7 +30,8 @@
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-          <button type="button" id="sidebarCollapse" class="btn btn-info" aria-label="menu resposive">
+          <button type="button" id="sidebarCollapse" class="btn btn-info" @click="menuMobile"
+              aria-label="menu resposive">
             <i class="fas fa-align-left fs-3"></i>
           </button>
         </div>
@@ -43,7 +44,6 @@
 </template>
 
 <script>
-import $ from "jquery";
 import Accueil from "./Accueil.vue";
 import Questionnaire from "./Questionnaire.vue";
 import Reponse from "./Reponse.vue";
@@ -56,11 +56,15 @@ export default {
     return {
       page: 1,
       token: localStorage.getItem("token"),
+      isActive: false
     };
   },
   methods: {
     display(k) {
       this.page = k;
+    },
+    menuMobile() {
+      this.isActive = !this.isActive;
     },
     logout() {
       // Appel API pour la deconnexion
@@ -90,32 +94,12 @@ export default {
     window.axios.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${this.token}`;
-
-    $(document).ready(function () {
-      $("#sidebarCollapse").on("click", function () {
-        $("#sidebar").toggleClass("active");
-      });
-    });
   },
 };
 </script>
 
 <style>
-p {
-  font-family: "Poppins", sans-serif;
-  font-size: 1.1em;
-  font-weight: 300;
-  line-height: 1.7em;
-  color: #999;
-}
 
-a,
-a:hover,
-a:focus {
-  color: inherit;
-  text-decoration: none;
-  transition: all 0.3s;
-}
 #sidebarCollapse{
   position: fixed;
 }
@@ -131,17 +115,6 @@ a:focus {
   outline: none !important;
   border: none;
 }
-
-.line {
-  width: 100%;
-  height: 1px;
-  border-bottom: 1px dashed #ddd;
-  margin: 40px 0;
-}
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
 
 .dashboard {
   display: flex;
@@ -165,11 +138,6 @@ a:focus {
   padding: 20px 0;
   position: fixed;
   
-}
-
-#sidebar ul p {
-  color: #fff;
-  padding: 10px;
 }
 
 #sidebar ul li a {
