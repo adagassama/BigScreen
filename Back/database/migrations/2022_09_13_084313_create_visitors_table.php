@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('visitors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();
-            $table->string('url')->nullable();
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }

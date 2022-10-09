@@ -30,6 +30,6 @@ Route::apiResource('questions', QuestionController::class);
 Route::apiResource('answers', AnswerController::class);
 Route::apiResource('visitors', VisitorController::class);
 
-Route::get('results/{url}', [AnswerController::class, 'getVisitorResponse']);
+Route::get('results/{token}', [AnswerController::class, 'getVisitorResponse']);
 Route::get('getPieChart/{id}', [BackController::class, 'getPieChart']);
 Route::get('getRadarChart', [BackController::class, 'getRadarChart']);
