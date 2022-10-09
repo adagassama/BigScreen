@@ -32,7 +32,8 @@ class BackController extends Controller
         return $stats;
     }
 
-    /**Méthode permettant de dynamiser le Radar chart dans le dashboard */
+    /* Méthode permettant de dynamiser le Radar chart pour les questions
+     (11, 12, 13, 14, 15) dans le dashboard */
     public function getRadarChart()
     {
         $questionId = [11, 12, 13, 14, 15];

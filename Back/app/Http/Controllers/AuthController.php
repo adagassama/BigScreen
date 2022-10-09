@@ -11,14 +11,14 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        //règle de validation des identifiants
+        // Règle de validation des identifiants
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
             'device_name' => 'required',
         ]);
 
-        //Récuperons le champs email de la table user
+        // Récuperation du champs email de la table user
         $user = User::where('email', $request->email)->first();
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
@@ -26,13 +26,13 @@ class AuthController extends Controller
                 'msg' => 'Les informations d\'identification fournies sont incorrectes'
             ]);
         }
-        // si les identifiants sont correct un token est crée pour la connexion
+        // Si les identifiants sont correct un token est crée pour la connexion
         return $user->createToken($request->device_name)->plainTextToken;
     }
 
     public function logout(Request $request)
     {
-        //Gestion de déconnexion de l'administrateur
+        // Méthode de déconnexion de l'administrateur
         $request->user()->currentAccessToken()->delete();
         return response()->json(['msg' => 'Vous êtes bien déconnecté']);
     }

@@ -17,7 +17,7 @@ class AnswerController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
 
-     //Méthode permettant de récupérer toutes les réponses
+     // Méthode permettant de récupérer toutes les réponses
     public function index()
     {
         $answer = Answer::with('question')->get();
@@ -36,6 +36,7 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
+        // Règle de validation des champs du formulaire
         $validator = Validator::make($request->all(), [
             'answersArray.*' => 'required',
             'answersArray.1' => 'email',
@@ -45,7 +46,6 @@ class AnswerController extends Controller
             'answersArray.1.email' => 'Veuillez rentrer une adresse mail valide',
             'answersArray.2.numeric' => 'Veuillez rentrer un entier pour l\'age',
         ]);
-
         if ($validator->fails()) {
             return response()->json([
                 'msg' => $validator->errors()->first(),
@@ -53,18 +53,21 @@ class AnswerController extends Controller
         } else {
             foreach ($request->answersArray as $key => $value) {
                 if ($key == 1) {
+                    // Validation email
                     $email = $value;
                     $visitor = Visitor::where('email', $email)->first();
                     if (!empty($visitor)) {
                         return response()->json(['msg' => 'Vous avez déjà participé à notre enqûete avec cette email'], 422);
 
                     } else {
+                        // Enregistrement d'un visiteur avec son token unique
                         $user = new Visitor();
                         $user->email = $value;
                         $user->token = Str::random(20);
                         $user->save();
                     }
                 }
+                // Enregistrement des autres champs du formulaire
                 $answer = new Answer();
                 $answer->answer = $value;
                 $answer->question_id = $key;
@@ -81,7 +84,8 @@ class AnswerController extends Controller
         }
 
     }
-    /** Méthode permettant de récupérer les résultats au sondage
+
+    /** Méthode permettant de récupérer les résultats du sondage
          *  d'un visiteur via un TOKEN unique  */
     public function getVisitorResponse($token)
     {
