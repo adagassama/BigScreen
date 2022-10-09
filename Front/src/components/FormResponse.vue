@@ -40,10 +40,13 @@ import dayjs from "dayjs";
 import { useRoute } from "vue-router";
 export default {
   mounted() {
+    // On recupère l'Url complete provenant de la barre de navigation
     const route = useRoute();
+    // On le transforme en tableau
     const route_path = route.path.split("/");
-    let token = route_path[2];
-    console.log(token);
+    // On recupère le token qui est situé à la dernière position
+    let token = route_path[2]; 
+    // On fait un appel API en lui passant le token en paramètre
     axios
       .get(`http://127.0.0.1:8000/api/results/${token}`)
       .then((res) => {
@@ -66,6 +69,7 @@ export default {
     };
   },
   methods: {
+    // Fonction permettant de formater la date du jour
     formatDate(dateString) {
       const date = dayjs(dateString);
       return date.format("	DD/MM/YYYY à hh:mm ");

@@ -15,7 +15,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        /** Méthode permettant de récupérer toutes les questions du model Question */
+        // Méthode permettant de récupérer toutes les questions du sondage
         $question = Question::all();
         return response()->json([
             'success' => true,

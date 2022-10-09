@@ -93,7 +93,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 export default {
   mounted() {
-    //API Call
+    // Appel API pour recuperer la liste des questions
     axios.get("http://127.0.0.1:8000/api/questions").then((res) => {
       this.questions = res.data.data;
       this.formData = this.questions.map((question) => {
@@ -110,13 +110,11 @@ export default {
     };
   },
   methods: {
-    // Ajout des résultats d'un sondage
+    // Enregistrement des réponses d'un visiteur
     create() {
-
       this.formData.forEach(element => {
           this.answers[element.question_id] = element.answer;
         });
-
       const userAnswers = {answersArray:this.answers};
       axios
         .post("http://127.0.0.1:8000/api/answers", userAnswers)
