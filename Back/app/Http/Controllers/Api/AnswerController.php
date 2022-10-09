@@ -17,7 +17,7 @@ class AnswerController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
 
-     //Méthode permettant de récupérer toutes les réponses 
+     //Méthode permettant de récupérer toutes les réponses
     public function index()
     {
         $answer = Answer::with('question')->get();
@@ -61,7 +61,7 @@ class AnswerController extends Controller
                     } else {
                         $user = new Visitor();
                         $user->email = $value;
-                        $user->url = Str::random(20);
+                        $user->token = Str::random(20);
                         $user->save();
                     }
                 }
@@ -77,19 +77,24 @@ class AnswerController extends Controller
                                                         facile à utiliser, seul ou en famille.<br>
                                                         Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
                                                         cette adresse:',
-                'url' => $user->url]);
+                'token' => $user->token]);
         }
 
     }
     /** Méthode permettant de récupérer les résultats au sondage
-         *  d'un visiteur via un URL unique  */
-    public function getVisitorResponse($url)
+         *  d'un visiteur via un TOKEN unique  */
+    public function getVisitorResponse($token)
     {
-        $visitor = Visitor::where('url', $url)->first();
+        $visitor = Visitor::where('token', $token)->first();
+        if(empty($visitor)){
+            return response()->json([
+                'success' => true,
+                'msg' => 'Désolé vous n\'avez pas participé au sondage',
+            ], 500);
+        }
         $visitorResponse = Answer::where('visitor_id', $visitor->id)
             ->with('question')
             ->get();
-
         return response()->json([
             'success' => true,
             'message' => 'Réponses Visitor',
