@@ -1,5 +1,38 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a>
-<a href="https://vuejs.org/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" width="200" height="200"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="https://bigscreenvr.com/assets/img/bigscreen_logo_black.png" width="400"></a>
+</p>
 
-# BigScreen
-Project final
+# PROJET FINAL
+
+### Côté server
+- Créer une Base de données appelée "survey"
+- Créer le ficher .env et associer la BD
+
+## Installation dépendances
+
+```sh
+$cd Back && composer install
+$cd Front && npm install
+```
+
+### Migrations et Seeders
+
+```sh
+php artisan migrate:fresh --seed
+```
+
+### Lancement côté server
+
+```sh
+$cd Back/php artisan serve
+```
+
+### Lancement côté Front
+
+```sh
+$cd Front/npm run dev
+```
+### Identifiants de Connexion Administrateur
+```sh
+- User: admin@gmail.com
+- Mdp: password
+```
