@@ -47,7 +47,7 @@ export default {
     };
   },
   mounted() {
-    //API Call
+    //Appel API pour récupérer la liste des questions
     axios.get("http://127.0.0.1:8000/api/questions").then((res) => {
       this.questions = res.data.data;
     });

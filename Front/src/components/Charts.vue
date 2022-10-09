@@ -13,7 +13,7 @@
 import axios from "axios";
 export default {
   mounted() {
-    //API Call
+    // Appel API pour la récupération des données de la question 6
     axios.get("http://127.0.0.1:8000/api/getPieChart/6").then((res) => {
       this.series = res.data;
     });

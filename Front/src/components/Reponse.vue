@@ -43,6 +43,7 @@
 import axios from "axios";
 export default {
   mounted() {
+     //Appel API pour récupérer la liste des réponses avec les questions
     axios
       .get(`http://127.0.0.1:8000/api/answers`)
       .then((res) => {
@@ -51,6 +52,7 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+      // Appel API pour récupérer la liste des visiteurs
     axios
       .get(`http://127.0.0.1:8000/api/visitors`)
       .then((res) => {

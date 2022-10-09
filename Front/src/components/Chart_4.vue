@@ -14,7 +14,7 @@
 import axios from "axios";
 export default {
   mounted() {
-    //API Call
+    // Appel API pour la récupération des données des questions 11,12,13,14,15
     axios.get("http://127.0.0.1:8000/api/getRadarChart").then((res) => {
       this.series[0].data = res.data;
     });

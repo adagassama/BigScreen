@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <!-- Sidebar  -->
-    <nav id="sidebar">
+    <nav id="sidebar" >
       <ul class="list-unstyled components pt-5 mt-5 text-center">
         <img
           src="../assets/bigscreen_logo.png"
@@ -17,12 +17,13 @@
         <li class="text-center" @click="display(3)">
           <a href="#">Réponses</a>
         </li>
+            <ul class="list-unstyled CTAs">
+            <li>
+              <a href="#" class="download" @click.prevent="logout" aria-label="bouton de deconnexion">Déconnexion</a>
+            </li>
+          </ul>
       </ul>
-      <ul class="list-unstyled CTAs">
-        <li>
-          <a href="#" class="download" @click.prevent="logout" aria-label="bouton de deconnexion">Déconnexion</a>
-        </li>
-      </ul>
+      
     </nav>
 
     <!-- Page Content  -->
@@ -62,9 +63,11 @@ export default {
       this.page = k;
     },
     logout() {
+      // Appel API pour la deconnexion
       axios
         .post("http://127.0.0.1:8000/api/logout")
         .then((response) => {
+          // Suppression du token de connexion
           localStorage.removeItem("token");
           Swal.fire({
             title: "Bigscreen !",
@@ -87,6 +90,7 @@ export default {
     window.axios.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${this.token}`;
+
     $(document).ready(function () {
       $("#sidebarCollapse").on("click", function () {
         $("#sidebar").toggleClass("active");
@@ -112,7 +116,9 @@ a:focus {
   text-decoration: none;
   transition: all 0.3s;
 }
-
+#sidebarCollapse{
+  position: fixed;
+}
 .navbar {
   border: none;
   border-radius: 0;
@@ -157,7 +163,8 @@ a:focus {
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
+  position: fixed;
+  
 }
 
 #sidebar ul p {
