@@ -8,7 +8,10 @@
         <div class="col-md-6">
           <div class="survey_title">
             <div class="pb-3">
-              <h5 class="card-title text-white mt-2">
+              <p v-if="this.msg !== ''" class="card-title error p-2 mb-5 bg-light text-center col-lg-12 m-auto">
+                {{ this.msg }}
+              </p>
+              <h5 v-else class="card-title text-white mt-2">
                 Vous trouverez ci-dessous les réponses que vous avez apportées à
                 notre sondage le: {{ formatDate(visitor.created_at) }}
               </h5>
@@ -39,22 +42,27 @@ export default {
   mounted() {
     const route = useRoute();
     const route_path = route.path.split("/");
-    let url = route_path[2];
-    console.log(url);
+    let token = route_path[2];
+    console.log(token);
     axios
-      .get(`http://127.0.0.1:8000/api/results/${url}`)
+      .get(`http://127.0.0.1:8000/api/results/${token}`)
       .then((res) => {
         this.answers = res.data.data;
         this.visitor = res.data[0];
       })
       .catch((error) => {
-        console.log(error);
-      });
+          console.log(error)
+          if (error.response.status == 500) {
+            this.msg = error.response.data.msg
+          }
+        });
   },
   data() {
     return {
       answers: [],
       visitor: [],
+      errors:[],
+      msg:""
     };
   },
   methods: {

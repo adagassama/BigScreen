@@ -90,6 +90,7 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   mounted() {
     //API Call
@@ -105,7 +106,6 @@ export default {
       questions: [],
       formData: [],
       answers: {},
-      errors:[],
       msg:""
     };
   },
@@ -124,7 +124,7 @@ export default {
           Swal.fire({
             title: "Bigscreen !",
             html: `<p>${response.data.text}</p>
-                             <a href="/response/${response.data.url}">http://localhost:5173/response/${response.data.url}</a>`,
+                             <a href="/response/${response.data.token}">http://localhost:5173/response/${response.data.token}</a>`,
             icon: "success",
           });
         })
